@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มแจ้งรายละเอียดข้อมูลลูกค้า</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header-top">
+        <h2>📋 รายละเอียดที่ต้องแจ้ง</h2>
+        <button type="button" id="btnClearForm" class="btn-clear-top">🗑️ ล้างข้อมูล</button>
+    </div>
+    
+    <div id="saveStatus" class="save-status">บันทึกข้อมูลแล้ว...</div>
+
+    <form id="infoForm">
+        <div class="form-group">
+            <label>1. ชื่อลูกค้า :</label>
+            <input type="text" id="customerName" placeholder="กรอกชื่อลูกค้า">
+        </div>
+
+        <div class="form-group">
+            <label>2. ทำอาชีพ :</label>
+            <input type="text" id="occupation" placeholder="กรอกอาชีพ">
+        </div>
+
+        <div class="form-group">
+            <label>3. สนใจโทรศัพท์รุ่น :</label>
+            <input type="text" id="phoneModel" placeholder="ระบุรุ่นโทรศัพท์">
+        </div>
+
+        <div class="form-group">
+            <label>4. มือ 1/2 :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="hand1" name="phoneHand" value="1">
+                <label for="hand1">มือ 1</label>
+                <input type="radio" id="hand2" name="phoneHand" value="2">
+                <label for="hand2">มือ 2</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>5. เลขอีมี่ :</label>
+            <input type="text" id="imei" placeholder="กรอกเลข IMEI">
+        </div>
+
+        <div class="form-group">
+            <label>6. เบอร์ลูกค้า :</label>
+            <input type="text" id="customerPhone" inputmode="numeric" placeholder="กรอกเบอร์โทรศัพท์ (ตัวเลขเท่านั้น)">
+        </div>
+
+        <div class="form-group">
+            <label>7. อายุ :</label>
+            <input type="text" id="age" inputmode="numeric" placeholder="กรอกอายุ (ตัวเลขเท่านั้น)">
+        </div>
+
+        <div class="form-group">
+            <label>8. แบตเปลี่ยนมาหรือไม่ ? :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="batChangeNo" name="batChange" value="ไม่">
+                <label for="batChangeNo">ไม่</label>
+                <input type="radio" id="batChangeYes" name="batChange" value="ใช่">
+                <label for="batChangeYes">ใช่</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>9. แบตแท้หรือไม่ ? :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="batOriginalYes" name="batOriginal" value="แท้">
+                <label for="batOriginalYes">แท้</label>
+                <input type="radio" id="batOriginalNo" name="batOriginal" value="ไม่แท้">
+                <label for="batOriginalNo">ไม่แท้</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>10. ลูกค้าทราบเรื่องแบตแล้วใช่หรือไม่ ? :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="batAwareYes" name="batAware" value="ใช่">
+                <label for="batAwareYes">ใช่</label>
+                <input type="radio" id="batAwareNo" name="batAware" value="ไม่">
+                <label for="batAwareNo">ไม่</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>11. มีกล่องหรือไม่ ? :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="hasBoxNo" name="hasBox" value="ไม่มี">
+                <label for="hasBoxNo">ไม่มี</label>
+                <input type="radio" id="hasBoxYes" name="hasBox" value="มี">
+                <label for="hasBoxYes">มี</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>12. มีสายชาร์จหรือไม่ ? :</label>
+            <div class="btn-toggle-group">
+                <input type="radio" id="hasCableNo" name="hasCable" value="ไม่มี">
+                <label for="hasCableNo">ไม่มี</label>
+                <input type="radio" id="hasCableYes" name="hasCable" value="มี">
+                <label for="hasCableYes">มี</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>13. Over :</label>
+            <input type="text" id="overValue" inputmode="numeric" placeholder="ระบุตัวเลข Over">
+        </div>
+
+        <div class="action-btn-group">
+            <button type="button" id="btnSummary" class="btn-summary">📌 สรุปข้อมูล</button>
+        </div>
+    </form>
+
+    <h3 style="margin-top: 25px; color: rgb(0, 0, 0);">📄 ข้อความสรุป:</h3>
+    <textarea id="summaryOutput" readonly placeholder="กดปุ่ม 'สรุปข้อมูล' เพื่อดูข้อความที่นี่..."></textarea>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
