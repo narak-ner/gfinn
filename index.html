@@ -3,8 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gfinn</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GFINN</title>
+    <style>
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Kanit', sans-serif, Tahoma; 
+        }
+
+        body { 
+            background-color: #f4f6f9; 
+            padding: 20px; 
+            margin: 0; 
+        }
+
+        .container { 
+            max-width: 600px; 
+            background: #ffffff; 
+            margin: 0 auto; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+        }
+
+        .header-top { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 15px; 
+        }
+
+        .header-top h2 { 
+            margin: 0; 
+            color: #1a73e8; 
+            font-size: 20px; 
+        }
+
+        .btn-clear-top {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-clear-top:hover { 
+            background-color: #bb2d3b; 
+        }
+
+        .form-group { 
+            margin-bottom: 16px; 
+        }
+
+        label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 6px; 
+            color: #333; 
+            font-size: 14px; 
+        }
+
+        input[type="text"], 
+        input[type="tel"], 
+        input[type="number"] {
+            width: 100%; 
+            padding: 10px 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 14px; 
+            outline: none;
+        }
+
+        input:focus { 
+            border-color: #1a73e8; 
+        }
+
+        .btn-toggle-group { 
+            display: flex; 
+            gap: 10px; 
+        }
+
+        .btn-toggle-group input[type="radio"] { 
+            display: none; 
+        }
+
+        .btn-toggle-group label {
+            flex: 1; 
+            text-align: center; 
+            padding: 10px; 
+            border: 2px solid #e2e8f0;
+            border-radius: 8px; 
+            cursor: pointer; 
+            background: #f8fafc; 
+            font-weight: bold;
+            color: #475569; 
+            transition: all 0.2s ease; 
+            user-select: none;
+        }
+
+        .btn-toggle-group label:hover { 
+            background-color: #e2e8f0; 
+        }
+
+        /* Custom Colors */
+        #hand1:checked + label { background-color: #0d6efd; border-color: #0d6efd; color: white; }
+        #hand2:checked + label { background-color: #8a2be2; border-color: #8a2be2; color: white; }
+
+        #batChangeNo:checked + label { background-color: #198754; border-color: #198754; color: white; }
+        #batChangeYes:checked + label { background-color: #fd7e14; border-color: #fd7e14; color: white; }
+
+        #batOriginalYes:checked + label { background-color: #198754; border-color: #198754; color: white; }
+        #batOriginalNo:checked + label { background-color: #dc3545; border-color: #dc3545; color: white; }
+
+        #batAwareYes:checked + label { background-color: #0d9488; border-color: #0d9488; color: white; }
+        #batAwareNo:checked + label { background-color: #e11d48; border-color: #e11d48; color: white; }
+
+        #hasBoxNo:checked + label { background-color: #64748b; border-color: #64748b; color: white; }
+        #hasBoxYes:checked + label { background-color: #4f46e5; border-color: #4f46e5; color: white; }
+
+        #hasCableNo:checked + label { background-color: #64748b; border-color: #64748b; color: white; }
+        #hasCableYes:checked + label { background-color: #0284c7; border-color: #0284c7; color: white; }
+
+        .action-btn-group { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: 25px; 
+        }
+
+        button.btn-summary,
+        button.btn-copy { 
+            flex: 1; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            color: white; 
+        }
+
+        button.btn-summary { 
+            background-color: #007bff; 
+        }
+
+        button.btn-summary:hover { 
+            background-color: #0056b3; 
+        }
+
+        button.btn-copy { 
+            background-color: #28a745; 
+        }
+
+        button.btn-copy:hover { 
+            background-color: #1e7e34; 
+        }
+
+        textarea#summaryOutput { 
+            width: 100%; 
+            height: 260px; 
+            margin-top: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            padding: 12px; 
+            font-size: 14px; 
+            background: #f9f9f9; 
+            resize: vertical; 
+        }
+
+        .save-status {
+            font-size: 12px; 
+            color: #0d6efd; 
+            text-align: right; 
+            margin-bottom: 10px; 
+            height: 16px; 
+            opacity: 0; 
+            transition: opacity 0.3s;
+        }
+
+        .auto-save-note {
+            font-size: 11px;
+            color: #6c757d;
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,6 +202,7 @@
     </div>
     
     <div id="saveStatus" class="save-status">บันทึกข้อมูลแล้ว...</div>
+    <div class="auto-save-note">💾 ข้อมูลถูกบันทึกอัตโนมัติในเครื่องของคุณ</div>
 
     <form id="infoForm">
         <div class="form-group">
@@ -114,6 +302,7 @@
 
         <div class="action-btn-group">
             <button type="button" id="btnSummary" class="btn-summary">📌 สรุปข้อมูล</button>
+            <button type="button" id="btnCopy" class="btn-copy">📋 คัดลอก</button>
         </div>
     </form>
 
@@ -121,6 +310,179 @@
     <textarea id="summaryOutput" readonly placeholder="กดปุ่ม 'สรุปข้อมูล' เพื่อดูข้อความที่นี่..."></textarea>
 </div>
 
-<script src="script.js"></script>
+<script>
+    const STORAGE_KEY = 'customerFormAutoSave';
+    let isClearing = false; // ตัวแปรล็อกป้องกันการทำงานซ้ำซ้อนขณะล้างข้อมูล
+
+    function getVal(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() || '-' : '-';
+    }
+
+    function getRadioVal(name) {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        return selected ? selected.value : '-';
+    }
+
+    function generateSummary() {
+        const text = `รายละเอียดที่ต้องแจ้ง
+1.ชื่อลูกค้า : ${getVal('customerName')}
+2.ทำอาชีพ : ${getVal('occupation')}
+3.สนใจโทรศัพท์รุ่น : ${getVal('phoneModel')}
+4.มือ 1/2 : ${getRadioVal('phoneHand')}
+5.เลขอีมี่ : ${getVal('imei')}
+6.เบอร์ลูกค้า : ${getVal('customerPhone')}
+7.อายุ : ${getVal('age')}
+8.แบตเปลี่ยนมาหรือไม่ ? : ${getRadioVal('batChange')}
+9.แบตแท้หรือไม่ ? : ${getRadioVal('batOriginal')}
+10.ลูกค้าทราบเรื่องแบตแล้วใช่หรือไม่ ? : ${getRadioVal('batAware')}
+11.มีกล่องหรือไม่ ? : ${getRadioVal('hasBox')}
+12.มีสายชาร์จหรือไม่ ? : ${getRadioVal('hasCable')}
+13.Over : ${getVal('overValue')}`;
+
+        document.getElementById('summaryOutput').value = text;
+    }
+
+    function saveData() {
+        if (isClearing) return; // หากอยู่ในสถานะล้างข้อมูล ให้ข้ามการบันทึกทันที
+
+        const inputs = document.querySelectorAll('#infoForm input');
+        const formData = {};
+
+        inputs.forEach(input => {
+            if (input.type === 'radio') {
+                if (input.checked) {
+                    formData[input.name] = input.value;
+                }
+            } else {
+                formData[input.id] = input.value;
+            }
+        });
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+        showSaveNotification();
+    }
+
+    function loadData() {
+        const savedData = localStorage.getItem(STORAGE_KEY);
+        if (!savedData) return;
+
+        try {
+            const formData = JSON.parse(savedData);
+            const inputs = document.querySelectorAll('#infoForm input');
+
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    if (formData[input.name] && input.value === formData[input.name]) {
+                        input.checked = true;
+                    }
+                } else {
+                    if (formData[input.id] !== undefined) {
+                        input.value = formData[input.id];
+                    }
+                }
+            });
+
+            generateSummary();
+        } catch (e) {
+            console.error("Error loading saved data", e);
+        }
+    }
+
+    function clearFormData() {
+        isClearing = true; // เปิดโหมดล็อกป้องกันเซฟซ้ำ
+        
+        document.getElementById('infoForm').reset();
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('summaryOutput').value = '';
+
+        setTimeout(() => {
+            isClearing = false; // คืนค่าสถานะปกติ
+        }, 150);
+    }
+
+    function showSaveNotification() {
+        const statusEl = document.getElementById('saveStatus');
+        if (statusEl) {
+            statusEl.style.opacity = '1';
+            setTimeout(() => {
+                statusEl.style.opacity = '0';
+            }, 1200);
+        }
+    }
+
+    // ฟังก์ชันคัดลอกข้อความ
+    function copySummary() {
+        const summaryText = document.getElementById('summaryOutput').value;
+        if (!summaryText.trim()) {
+            alert('ยังไม่มีข้อความสรุป กรุณากรอกข้อมูลก่อน');
+            return;
+        }
+
+        navigator.clipboard.writeText(summaryText).then(() => {
+            const btnCopy = document.getElementById('btnCopy');
+            const originalText = btnCopy.textContent;
+            btnCopy.textContent = '✅ คัดลอกแล้ว!';
+            setTimeout(() => {
+                btnCopy.textContent = originalText;
+            }, 1500);
+        }).catch(err => {
+            console.error('คัดลอกไม่สำเร็จ: ', err);
+            // fallback สำหรับเบราว์เซอร์เก่า
+            const textarea = document.getElementById('summaryOutput');
+            textarea.select();
+            document.execCommand('copy');
+            alert('คัดลอกข้อความแล้ว');
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadData();
+
+        // ปุ่มล้างข้อมูล
+        const btnClear = document.getElementById('btnClearForm');
+        if (btnClear) {
+            btnClear.addEventListener('click', clearFormData);
+        }
+
+        // ปุ่มสรุปข้อมูล
+        const btnSummary = document.getElementById('btnSummary');
+        if (btnSummary) {
+            btnSummary.addEventListener('click', () => {
+                generateSummary();
+                saveData();
+            });
+        }
+
+        // ปุ่มคัดลอก
+        const btnCopy = document.getElementById('btnCopy');
+        if (btnCopy) {
+            btnCopy.addEventListener('click', copySummary);
+        }
+
+        // กรองเฉพาะตัวเลขสำหรับช่องเบอร์, อายุ, Over
+        ['customerPhone', 'age', 'overValue'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                });
+            }
+        });
+
+        // บันทึกอัตโนมัติเมื่อพิมพ์หรือเลือกตัวเลือก
+        const form = document.getElementById('infoForm');
+        if (form) {
+            form.addEventListener('input', () => {
+                generateSummary();
+                saveData();
+            });
+            form.addEventListener('change', () => {
+                generateSummary();
+                saveData();
+            });
+        }
+    });
+</script>
 </body>
 </html>
